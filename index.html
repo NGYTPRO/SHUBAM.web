@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Checker</title>
+    <style>
+        body {
+            background-color: #ffe6e6; /* Light pink background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #ff3366; /* Dark pink color */
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #ff3366; /* Pink button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e62e5a; /* Darker pink on hover */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>MADE BY SHUBAM DIGRA</h1>
+    <div class="container">
+        <label for="yourName">Enter Your Name:</label>
+        <input type="text" id="yourName" placeholder="Your name">
+        
+        <label for="friendName">Enter Friend's Name:</label>
+        <input type="text" id="friendName" placeholder="Friend's name">
+        
+        <button onclick="checkRelation()">Send</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkRelation() {
+            const yourName = document.getElementById("yourName").value.trim().toLowerCase();
+            const friendName = document.getElementById("friendName").value.trim().toLowerCase();
+            const resultDiv = document.getElementById("result");
+
+            if (!yourName || !friendName) {
+                resultDiv.textContent = "Please enter both names!";
+                return;
+            }
+
+            // Check if the input matches Shubam and Siya in any order
+            if (
+                (yourName === "shubam" && friendName === "siya") ||
+                (yourName === "siya" && friendName === "shubam")
+            ) {
+                resultDiv.textContent = `Result: ${yourName} and ${friendName} are Lovers!`;
+                alert("Congratulations! 💕");
+            } else {
+                const randomOptions = ["Friends", "Siblings", "Brother", "Sister"];
+                const randomResult = randomOptions[Math.floor(Math.random() * randomOptions.length)];
+                resultDiv.textContent = `Result: ${yourName} and ${friendName} are ${randomResult}!`;
+            }
+        }
+    </script>
+</body>
+</html>
